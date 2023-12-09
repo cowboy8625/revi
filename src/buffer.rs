@@ -155,6 +155,14 @@ impl Buffer {
         }
     }
 
+    pub fn set_cursor_row(&mut self, row: usize) {
+        self.cursor.set_row(row);
+    }
+
+    pub fn set_scroll_row(&mut self, row: usize) {
+        self.cursor.scroll.y = row as u16;
+    }
+
     pub fn save(&self, filename: Option<String>) -> std::io::Result<()> {
         let name = match filename {
             Some(ref n) => n,

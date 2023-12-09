@@ -53,7 +53,18 @@ impl App for Revi {
 
     fn update(&mut self, message: Self::Message) -> Option<Self::Message> {
         match self {
-            Self::Editor((state, _)) => state.borrow_mut().update(message),
+            Self::Editor((state, api)) => match message {
+                Message::RhaiFunc(func) => {
+                    let name = func.fn_name().to_string();
+                    let Err(err) = api.eval_func(func) else {
+                        eprintln!("ran command {name}");
+                        return None;
+                    };
+                    eprintln!("{}", err);
+                    None
+                }
+                _ => state.borrow_mut().update(message),
+            },
         }
     }
 

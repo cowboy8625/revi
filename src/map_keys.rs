@@ -173,7 +173,7 @@ impl Mapper {
         self
     }
 
-    pub fn _nmap(&mut self, keys: &str, message: Message) {
+    pub fn nmap(&mut self, keys: &str, message: Message) {
         self.nmaps.insert(&string_to_keys(keys), message);
     }
 

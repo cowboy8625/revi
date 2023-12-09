@@ -11,6 +11,7 @@ use crate::Mode;
 #[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone)]
 pub enum Message {
+    RhaiFunc(rhai::FnPtr),
     CursorDown,
     CursorUp,
     CursorLeft,

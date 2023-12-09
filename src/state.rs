@@ -98,12 +98,6 @@ impl State {
         None
     }
 
-    pub fn set_cursor_row(&mut self, row: usize) -> Option<Message> {
-        let buf = self.get_focused_buffer_mut();
-        buf.set_row(row);
-        None
-    }
-
     pub fn scroll_up(&mut self) -> Option<Message> {
         let buf = self.get_focused_buffer_mut();
         buf.scroll_up();
@@ -529,6 +523,7 @@ impl App for State {
                 self.is_running = false;
                 None
             }
+            _ => unreachable!(),
         }
     }
 
